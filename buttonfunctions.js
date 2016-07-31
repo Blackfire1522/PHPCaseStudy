@@ -1,3 +1,3 @@
 function showMore() {
-	$("hiddenvideo").css("display", "initial");;
+	$(".hiddenvideo").css("display", "initial");
 }
