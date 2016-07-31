@@ -51,23 +51,24 @@ function check_url($url){
 				}
 				else{
 					$playlist_id = get_playlist_id($url);
-					$video_list = get_video_list($playlist_id);
-					
-					$count = 0;
-					
-					foreach($video_list['items'] as $video_data) {
-					$count++;
-						if($count > 8){
-							$id = 'hiddenvideo'.$count;
-							echo(
+					if($playlist_id){
+						$video_list = get_video_list($playlist_id);
+						
+						$count = 0;
+						
+						foreach($video_list['items'] as $video_data) {
+						$count++;
+							if($count > 8){
+								$id = 'hiddenvideo'.$count;
+								echo(
 				'<div id='.$id.'>'
-								);
-						}
-						else{
-							echo(
+									);
+							}
+							else{
+								echo(
 				'<div id="video">'
-							);
-						}
+								);
+							}
 				?>
 				
 					<div id="video-title">
@@ -106,6 +107,7 @@ function check_url($url){
 					<button type="button" id="more" onclick="showMore()";>more</button>
 				
 				<?php
+					}
 				}
 			}
 				?>

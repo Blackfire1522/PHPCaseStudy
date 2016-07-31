@@ -30,9 +30,12 @@ function get_playlist_id($url){
 	
 	$api_key = '&key=AIzaSyBR9JhYsTW5OX-CpG-Tu0_zm7aLs4YooDI';
 	$api_call = $api_request.$username.$api_key;
-	
 	$data = file_get_contents($api_call);
 	$chinfo = json_decode($data, true);
+	if(empty($chinfo["items"] == 0)){
+		echo 'Invalid URL';
+		return false;
+	}
 	
 	return $chinfo["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"];
 }
