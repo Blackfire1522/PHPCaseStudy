@@ -5,7 +5,7 @@
 		false: if not
 */
 function check_url($url){
-	$regex = '/youtube\.com\/[user|channel|playlist]/';	//regex to check wether a url is linked to a youtube channel or playlist
+	$regex = '/youtube\.com\/[user|channel|playlist]/';	//regex to check wether a url is linked to a youtube channel or playlist.
 	if(preg_match($regex, $url) == 0){
 		return false;
 	}
@@ -61,29 +61,29 @@ function check_url($url){
 							if($count > 8){
 								$id = 'hiddenvideo'.$count;
 								echo(
-				'<div id='.$id.'>'
+				'<div class='.$id.'>'
 									);
 							}
 							else{
 								echo(
-				'<div id="video">'
+				'<div class="video">'
 								);
 							}
 				?>
 				
-					<div id="video-title">
+					<div class="video-title">
 						<?php 
 							echo $video_data['snippet']['title']; 
 						?>
 					</div>
 					
-					<div id="player">
+					<div class="player">
 						<iframe 
 							src="https://www.youtube.com/embed/<?=$video_data['snippet']['resourceId']['videoId']?>" 
 							allowfullscreen>
 						</iframe>
 					</div>
-					<div id="description">
+					<div class="description">
 					
 						<?php
 							echo $video_data['snippet']['description'];
@@ -91,7 +91,7 @@ function check_url($url){
 						
 					</div>
 					
-					<div id="duration">
+					<div class="duration">
 						<span class="bluetext">&#9719;</span>
 						
 						<?php
