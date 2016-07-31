@@ -1,4 +1,5 @@
 <?php
+include 'apiCalls.php';
 /**
 @param A url to check
 @return true: if the given url is linked to a youtube channel or playlist
@@ -40,10 +41,7 @@ function check_url($url){
 		</div>
 		<div id="main">
 			
-			<?php
-			include 'apiCalls.php';
-			
-			
+			<?php	
 			if(!empty($_POST['channel-url'])){
 				$url = $_POST['channel-url'];
 				
