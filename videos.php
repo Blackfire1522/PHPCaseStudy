@@ -59,9 +59,8 @@ function check_url($url){
 						foreach($video_list['items'] as $video_data) {
 						$count++;
 							if($count > 8){
-								$id = 'hiddenvideo'.$count;
 								echo(
-				'<div class='.$id.'>'
+				'<div class="hiddenvideo">'
 									);
 							}
 							else{
