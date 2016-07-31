@@ -16,15 +16,16 @@ function get_playlist_id($url){
         'key'=>API_KEY
     );			
 	$parsed_url =   parse_url($url);
-	if(preg_match('/channel/', $url)){		
-		$url_array = explode('/', $url);
+	if(preg_match('/channel/', $url)){	
+		$path = $parsed_url['path'];
+		$url_array = explode('/', $path);
 		$index = array_search('channel', $url_array);
 		$channel_id = $url_array[$index + 1];
 		$params['id'] = $channel_id;		
 	}
 	
 	elseif(preg_match('/user/', $url)){		
-		$url_array = explode('/', $url);
+		$url_array = explode('/', $parsed_url['path']);
 		$index = array_search('user', $url_array);
 		$username = $url_array[$index + 1];
 		$params['forUsername'] = $username;	
@@ -32,13 +33,11 @@ function get_playlist_id($url){
 	
 	else{									
 		$query = $parsed_url['query'];
-        parse_str($query,$params);
+        parse_str($query, $params);
         $id = $params['list'];
         return $id;
 	}
-	
-	$api_key = '&key=AIzaSyBR9JhYsTW5OX-CpG-Tu0_zm7aLs4YooDI';
-	$api_call = $api_request.$username.$api_key;
+	$api_call = $base_url.'?'.http_build_query($params);
 	$data = file_get_contents($api_call);
 	$chinfo = json_decode($data, true);
 	if(empty($chinfo["items"])){
