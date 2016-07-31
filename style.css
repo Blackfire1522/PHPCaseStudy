@@ -1,0 +1,131 @@
+.bluetext{
+	color: #26A2FF;
+	font-weight: bold;
+}
+
+body{
+	background-color:white;
+	text-align: center;
+	font-family: arial;
+}
+
+button{
+	background-color: #1561bf;
+	width: 72px;
+	height: 33px;
+	cursor: pointer;
+	color: white;
+	font-size: 14px;
+	font-family: arial;
+	font-weight: bold;
+	padding: 2px;
+	border-radius: 7px;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	-o-border-radius: 7px;
+	margin-left: 15px;
+	margin-right: 15px;
+	
+}
+
+button:hover, button:active {
+	outline: none;
+	background: white;
+	color: #1561bf;
+
+}
+
+
+input{
+	height: 33px;
+	width: 200px;
+	border-radius: 7px;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	-o-border-radius: 7px;
+	text-align: center
+	
+}
+
+iframe{
+	frameborder: 0;
+}
+
+#homepage{
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+}
+
+#header{
+	width:auto;
+	height:180px;
+}
+
+#video-title{
+	text-align: center;
+	font-weight: bold;
+	font-size: 18px;
+	height: 65px;
+	
+}
+
+#player{
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+#video{
+	width: 25%;
+	float: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-align: center;
+}
+
+#hiddenvideo9{
+	width: 25%;
+	float: left;
+	display: none;
+}
+
+#hiddenvideo10{
+	width: 25%;
+	float: left;
+	display: none;
+}
+
+#hiddenvideo11{
+	width: 25%;
+	float: left;
+	display: none;
+}
+
+#hiddenvideo12{
+	width: 25%;
+	float: left;
+	display: none;
+}
+
+
+
+#description{
+	text-align: left;
+	height: 120px;
+	overflow: auto;
+	margin-left: 10%;
+	margin-right: 30px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+#duration{
+	text-align: left;
+	font-size: 18px;
+	margin-left: 10%;
+	margin-top: 15px;
+	margin-bottom: 50px;
+}
+
+
+
