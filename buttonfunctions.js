@@ -1,3 +1,6 @@
 function showMore() {
-	$(".hiddenvideo").css("display", "initial");
+	$(".hiddenvideo").css("display", "inline");
+	$(".hiddenvideo").addClass(".video");
+	$(".hiddenvideo").removeClass(".hiddenvideo");
+	$("#more").hide();
 }
