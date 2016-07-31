@@ -1,5 +1,6 @@
 <!-- API calls useable to get playlistId, videoData and the length of certain videos on youtube -->
 <?php 
+define('API_KEY', 'AIzaSyBR9JhYsTW5OX-CpG-Tu0_zm7aLs4YooDI');
 /**
 @param $url A YouTube-URL to a Channel or playlist, to get a playlistId from
 @return the playlistId from the given playlist or the "uploads"-playlist of a given channel
@@ -8,31 +9,39 @@ Uses the YouTube-API to get the playlistId
 Channels with long or complex names have a "youtube.com/channel/[channelId]" URL, these are accessed using the channelId,
 other channels have a "youtube.com/user/[username]" URL, these are accessed using the username.
 */
-function get_playlist_id($url){				
+function get_playlist_id($url){	
+	$base_url = 'https://www.googleapis.com/youtube/v3/channels';
+    $params = array(
+        'part'=>'contentDetails',
+        'key'=>API_KEY
+    );			
+	$parsed_url =   parse_url($url);
 	if(preg_match('/channel/', $url)){		
 		$url_array = explode('/', $url);
 		$index = array_search('channel', $url_array);
-		$username = $url_array[$index + 1];
-		$api_request = 'https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=';		
+		$channel_id = $url_array[$index + 1];
+		$params['id'] = $channel_id;		
 	}
 	
 	elseif(preg_match('/user/', $url)){		
 		$url_array = explode('/', $url);
 		$index = array_search('user', $url_array);
 		$username = $url_array[$index + 1];
-		$api_request = 'https://www.googleapis.com/youtube/v3/channels?part=contentDetails&forUsername=';	
+		$params['forUsername'] = $username;	
 	}
 	
 	else{									
-		$url_array = explode('playlist?list=', $url);
-		return $url_array[1];
+		$query = $parsed_url['query'];
+        parse_str($query,$params);
+        $id = $params['list'];
+        return $id;
 	}
 	
 	$api_key = '&key=AIzaSyBR9JhYsTW5OX-CpG-Tu0_zm7aLs4YooDI';
 	$api_call = $api_request.$username.$api_key;
 	$data = file_get_contents($api_call);
 	$chinfo = json_decode($data, true);
-	if(empty($chinfo["items"] == 0)){
+	if(empty($chinfo["items"])){
 		echo 'Invalid URL';
 		return false;
 	}

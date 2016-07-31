@@ -112,7 +112,8 @@ iframe{
 .description{
 	text-align: left;
 	height: 120px;
-	overflow: auto;
+	overflow: hidden;
+	text-overflow: ellipsis;
 	margin-left: 10%;
 	margin-right: 30px;
 	margin-top: 15px;
