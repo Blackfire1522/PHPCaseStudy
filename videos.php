@@ -23,6 +23,7 @@ function check_url($url){
 	<title>Videos</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="buttonfunctions.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </head>
 
 <body>
@@ -30,7 +31,7 @@ function check_url($url){
 		<div id="header">
 			<h1>Videos</h1>
 		
-			<form action="">
+			<form action="videos.php" method="POST">
 			<input type="url" name="channel-url" placeholder="YouTube-URL"/>
 			<button type="submit">
 			submit
@@ -43,8 +44,8 @@ function check_url($url){
 			include 'apiCalls.php';
 			
 			
-			if(!empty($_GET['channel-url'])){
-				$url = $_GET['channel-url'];
+			if(!empty($_POST['channel-url'])){
+				$url = $_POST['channel-url'];
 				
 				if(!check_url($url)){
 					echo 'Please enter the URL of a Youtube-Channel (e.g. "https://youtube.com/user/*username*")';
