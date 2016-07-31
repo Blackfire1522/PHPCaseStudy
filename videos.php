@@ -1,4 +1,9 @@
 <?php
+/**
+@param A url to check
+@return true: if the given url is linked to a youtube channel or playlist
+		false: if not
+*/
 function check_url($url){
 	$regex = '/youtube\.com\/[user|channel|playlist]/';	//regex to check wether a url is linked to a youtube channel or playlist
 	if(preg_match($regex, $url) == 0){
